@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ProdukdeskripsiModel extends Model
+class ProdukTermasukModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'produk_termasuks';

@@ -9,6 +9,17 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
+use App\Models\ProdukModel;
+use App\Models\KategoriModel;
+use App\Models\FotoProdukModel;
+use App\Models\GaleriModel;
+use App\Models\SlugModel;
+use App\Models\ProdukTermasukModel;
+use App\Models\ProdukTidakTermasukModel;
+use App\Models\KetentuanModel;
+
+use App\Models\PagingGaleriModel;
+
 /**
  * Class BaseController
  *
@@ -51,8 +62,20 @@ abstract class BaseController extends Controller
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
+        $this->objProduk        = new ProdukModel;
+        $this->objKategori      = new KategoriModel;
+        $this->objFotoProduk    = new FotoProdukModel;
+        $this->objGaleri        = new GaleriModel;
+        $this->objSlug          = new SlugModel;
+        $this->objTermasuk      = new ProdukTermasukModel;
+        $this->objTakTermasuk   = new ProdukTidakTermasukModel;
+        $this->objKetentuan     = new KetentuanModel;
+
+        $this->objPagingGaleri  = new PagingGaleriModel;
+
         $this->session  = \Config\Services::session();
         $this->request  = \Config\Services::request();
+        $this->pager    = \Config\Services::pager();
 
         // Preload any models, libraries, etc, here.
 
