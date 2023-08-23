@@ -35,7 +35,7 @@ $con=mysqli_connect('localhost','root','');
 
 mysqli_select_db($con,'travel') or die ("Koneksi DB gagal");
 
-$query=mysqli_query($con,"select * from slug");
+$query=mysqli_query($con,"select * from slugs");
 
 while($row=mysqli_fetch_array($query))
 {
