@@ -16,7 +16,7 @@ class SlugModel extends Model
     protected $allowedFields    = ['slug','target','filter'];
 
     // Valydation
-    protected $rules                = [
+    protected $rules            = [
         'slug'  => [
             'label' =>'Slug',
             'rules'	=>'required',

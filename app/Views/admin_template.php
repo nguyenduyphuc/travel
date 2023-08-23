@@ -117,6 +117,36 @@
                     </div>
                 </div>
             </li>
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTermasuk"
+                    aria-expanded="true" aria-controls="collapseTermasuk">
+                    <i class="fas fa-check-square"></i>
+                    <span>Produk Inclusion</span>
+                </a>
+                <div id="collapseTermasuk" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Menu:</h6>
+                        <a class="collapse-item" href="<?= base_url('admin/termasuk') ?>">Lihat Semua</a>
+                        <a class="collapse-item" href="<?= base_url('admin/termasuk/create') ?>">Tambah Foto Galeri</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTakTermasuk"
+                    aria-expanded="true" aria-controls="collapseTakTermasuk">
+                    <i class="fas fa-times-circle"></i>
+                    <span>Produk Exclusion</span>
+                </a>
+                <div id="collapseTakTermasuk" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Menu:</h6>
+                        <a class="collapse-item" href="<?= base_url('admin/tak-termasuk') ?>">Lihat Semua</a>
+                        <a class="collapse-item" href="<?= base_url('admin/tak-termasuk/create') ?>">Tambah Foto Galeri</a>
+                    </div>
+                </div>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKetentuan"
@@ -129,21 +159,6 @@
                         <h6 class="collapse-header">Menu:</h6>
                         <a class="collapse-item" href="<?= base_url('admin/ketentuan') ?>">Lihat Semua</a>
                         <a class="collapse-item" href="<?= base_url('admin/ketentuan/create') ?>">Tambah Foto Galeri</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTermasuk"
-                    aria-expanded="true" aria-controls="collapseTermasuk">
-                    <i class="far fa-images"></i>
-                    <span>Produk Inclusion</span>
-                </a>
-                <div id="collapseTermasuk" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Menu:</h6>
-                        <a class="collapse-item" href="<?= base_url('admin/termasuk') ?>">Lihat Semua</a>
-                        <a class="collapse-item" href="<?= base_url('admin/termasuk/create') ?>">Tambah Foto Galeri</a>
                     </div>
                 </div>
             </li>
@@ -219,7 +234,11 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= logged_in() ? user()->firstname.' '.user()->lastname : '' ?></span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                <?php 
+                                    // echo logged_in() ? user()->firstname.' '.user()->lastname : '' 
+                                ?>
+                            </span>
                             <img class="img-profile rounded-circle"
                                 src="<?= base_url('admin-assets/img/undraw_profile.svg') ?>">
                         </a>
