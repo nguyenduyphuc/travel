@@ -259,8 +259,8 @@ class KategoriModel extends Model
     {
         $query  = $this->db->query
         ('
-            SELECT cat.id_kategori , cat.nama_kategori , cat.foto_kategori , cat.deskripsi , category.nama_kategori as parent FROM kategori as cat
-            LEFT join kategori as category on category.id_kategori = cat.parent'
+            SELECT cat.id_kategori , cat.nama_kategori , cat.foto_kategori , category.nama_kategori as parent FROM kategoris as cat
+            LEFT join kategoris as category on category.id_kategori = cat.parent'
         );
         
         return $query->getResult('array');

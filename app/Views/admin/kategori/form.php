@@ -1,0 +1,220 @@
+<?php
+    $session  = \Config\Services::session();
+    $validationErrors = $session->getFlashdata('validation'); 
+?>
+
+<?= $this->extend('admin_template') ?>
+
+<?= $this->section('specific-css') ?>
+    <!-- Taruh spesifik css untuk tiap halaman disini -->
+    <link rel="stylesheet" href="<?= base_url('admin-assets/vendor/summernote/summernote.min.css'); ?>">
+    <style>
+        .p-admin{
+            margin-bottom: -0.15rem; 
+            font-size: 1.25rem; 
+            text-align: left; 
+            margin-top: 0.5rem !important;
+        }
+    </style>
+<?= $this->endSection() ?>
+
+<?= $this->section('content') ?>
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><?= isset($dataKategori->nama_kategori) ? 'Edit '.$dataKategori->nama_kategori : 'Tambah Kategori' ?></h1>
+    </div>
+
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="<?= route_to('admin'); ?>">Dashboard</a>
+        <li class="breadcrumb-item"><a href="<?= base_url('admin/kategori'); ?>">List Kategori</a></li>
+        <li class="breadcrumb-item active"><?= isset($dataKategori->nama_kategori) ? 'Edit '.$dataKategori->nama_kategori : 'Tambah Kategori' ?></li>
+    </ol>
+
+    <!-- Form Kategori -->
+    <?php if (isset($dataKategori->id_kategori)) : ?>
+        <form action="<?= base_url(); ?>/admin/kategori/<?= $dataKategori->kategori_id ?>" method="post" enctype="multipart/form-data">
+    <?php else : ?>
+        <form action="<?= base_url(); ?>/admin/kategori" method="post" enctype="multipart/form-data">
+    <?php endif; ?>
+
+        <div class="row">
+
+            <?= csrf_field(); ?>
+
+            <input type="hidden" name="_method" value="PUT" />
+
+            <div class="offset-lg-1 col-lg-10 mt-3">
+
+                <?php if($session->getFlashdata('error')) : ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= $session->getFlashdata('error') ?>
+                    </div>
+                <?php endif; ?>
+
+                <div class="card h-auto">
+                    <div class="card-header bg-gradient-primary">
+                        <p class="h4 text-white text-center">Detail Kategori</p>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-center">
+                            <?php if(isset($dataKategori->foto_kategori)) : ?>
+                                <img class="card-img mb-3 w-25" src="<?= base_url(); ?>/assets/images/<?= $dataKategori->foto_kategori; ?>">
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="offset-lg-1 col-xl-2 col-md-2 form-label">Foto Kategori</label>
+                            <div class="col-xl-8 col-md-6">
+                                <input type="file" name="foto_kategori">
+                                <input type="text" name="image_path" class="form-control" value="<?= isset($dataKategori->foto_kategori) ? $dataKategori->foto_kategori : old(esc('foto_kategori')) ?>" hidden>
+                                <?php if($session->getFlashdata('validation')) : ?>
+                                    <?php if(isset($validationErrors['foto_kategori'])) : ?>
+                                        <p class="text-danger">*<?= $validationErrors['foto_kategori'] ?></p>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
+                            
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="offset-lg-1 col-xl-2 col-md-2 form-label">Alt Foto</label>
+                            <div class="col-xl-8 col-md-6">
+                                <input type="text" name="alt_foto" class="form-control <?= isset($validationErrors['alt_foto']) ? 'is-invalid' : '' ?>" value="<?= isset($dataKategori->alt_foto) ? $dataKategori->alt_foto : old(esc('alt_foto')) ?>">
+                                <?php if($session->getFlashdata('validation')) : ?>
+                                    <?php if(isset($validationErrors['alt_foto'])) : ?>
+                                        <p class="text-danger">*<?= $validationErrors['alt_foto'] ?></p>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="offset-lg-1 col-xl-2 col-md-2 form-label">Nama Kategori</label>
+                            <div class="col-xl-8 col-md-6">
+                                <input type="text" name="nama_kategori" class="form-control <?= isset($validationErrors['nama_kategori']) ? 'is-invalid' : '' ?>" value="<?= isset($dataKategori->nama_kategori) ? $dataKategori->nama_kategori : old(esc('nama_kategori')) ?>">
+                                <?php if($session->getFlashdata('validation')) : ?>
+                                    <?php if(isset($validationErrors['nama_kategori'])) : ?>
+                                        <p class="text-danger">*<?= $validationErrors['nama_kategori'] ?></p>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="offset-lg-1 col-xl-2 col-md-2 form-label">Parent</label>
+                            <div class="col-xl-6 col-md-6">
+                                <select name="parent" class="form-control <?= isset($validationErrors['parent']) ? 'is-invalid' : '' ?>">
+                                    <option value="0">No Parent</option>
+                                    <?php foreach($dataParent as $parent) : ?>
+                                        <?php if($dataKategori->parent === $parent['kategori_id']) : ?>
+                                            <option selected value="<?= $parent['kategori_id'] ?>"><?= $parent['nama_kategori'] ?></option>
+                                        <?php else : ?>
+                                            <option value="<?= $parent['kategori_id'] ?>"><?= $parent['nama_kategori'] ?></option>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </select>
+                                <?php if($session->getFlashdata('validation')) : ?>
+                                    <?php if(isset($validationErrors['parent'])) : ?>
+                                        <p class="text-danger">*<?= $validationErrors['parent'] ?></p>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="offset-lg-1 col-xl-2 col-md-2 form-label">URL Kategori</label>
+                            <div class="col-xl-8 col-md-6">
+                                <input type="text" name="url_kategori" class="form-control <?= isset($validationErrors['url_kategori']) ? 'is-invalid' : '' ?>" value="<?= isset($dataKategori->url_kategori) ? $dataKategori->url_kategori : old(esc('url_kategori')) ?>">
+                                <?php if($session->getFlashdata('validation')) : ?>
+                                    <?php if(isset($validationErrors['url_kategori'])) : ?>
+                                        <p class="text-danger">*<?= $validationErrors['url_kategori'] ?></p>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="offset-lg-1 col-xl-2 col-md-2 form-label">Deskripsi</label>
+                            <div class="col-xl-8 col-md-6">
+                                <textarea id="summernote" name="deskripsi" rows="3"><?= isset($dataKategori->deskripsi) ? $dataKategori->deskripsi : old('deskripsi') ?></textarea>
+                                <div class="button_set mt-1">
+                                </div>
+                                <?php if($session->getFlashdata('validation')) : ?>
+                                    <?php if(isset($validationErrors['deskripsi'])) : ?>
+                                        <p class="text-danger">*<?= $validationErrors['deskripsi'] ?></p>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="offset-lg-1 col-lg-10 mt-3 text-center mb-4">
+
+                <div class="card h-auto">
+                    <div class="card-header bg-gradient-primary text-center">
+                        <p class="h4 text-white">Keperluan SEO</p>
+                    </div>
+
+                    <div class="card-body">
+                    
+                        <div class="form-group row">
+                            <label class="offset-lg-1 col-xl-2 col-md-2 form-label">Judul SEO</label>
+                            <div class="col-xl-8 col-md-6">
+                                <input type="text" name="judul_seo" class="form-control <?= isset($validationErrors['judul_seo']) ? 'is-invalid' : '' ?>" value="<?= isset($dataKategori->judul_seo) ? $dataKategori->judul_seo : old(esc('judul_seo')) ?>">
+                                <?php if($session->getFlashdata('validation')) : ?>
+                                    <?php if(isset($validationErrors['judul_seo'])) : ?>
+                                        <p class="text-danger">*<?= $validationErrors['judul_seo'] ?></p>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="offset-lg-1 col-xl-2 col-md-2 form-label">Deskripsi SEO</label>
+                            <div class="col-xl-8 col-md-6">
+                                <input type="text" name="deskripsi_seo" class="form-control <?= isset($validationErrors['deskripsi_seo']) ? 'is-invalid' : '' ?>" value="<?= isset($dataKategori->deskripsi_seo) ? $dataKategori->deskripsi_seo : old(esc('deskripsi_seo')) ?>">
+                                <?php if($session->getFlashdata('validation')) : ?>
+                                    <?php if(isset($validationErrors['deskripsi_seo'])) : ?>
+                                        <p class="text-danger">*<?= $validationErrors['deskripsi_seo'] ?></p>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row form-group mt-3">
+                    <label class="col-xl-2 col-form-label"></label>
+                    <div class="col-xl-10 text-center">
+                        <input type="submit" name="submit" class="btn btn-info" value="Save Data">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+<?= $this->endSection() ?>
+
+<?= $this->section('specific-js') ?>
+    <!-- Taruh spesifik js untuk tiap halaman disini -->
+    <script type="text/javascript" src="<?= base_url('admin-assets/vendor/summernote/summernote.min.js'); ?>"></script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                height: 200,
+                minHeight: null,
+                maxHeight: null,             
+                focus: true
+            });
+        });
+    </script>
+<?= $this->endSection() ?>

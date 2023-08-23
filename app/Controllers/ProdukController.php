@@ -8,6 +8,6 @@ class ProdukController extends BaseController
 {
     public function create()
     {
-        return view('admin/product/create_produk_form');
+        return view('admin/produk/create_produk_form');
     }
 }
