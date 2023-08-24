@@ -18,21 +18,20 @@ class KategoriController extends BaseController
         }
         else
         {
-            $fileName = (array_key_exists('image_path', $this->request->getPost())) ? $this->request->getPost('image_path') : "no-image.jpg"; 
+            $fileName = (array_key_exists('foto_kategori', $this->request->getPost())) ? $this->request->getPost('foto_kategori') : "no-image.jpg"; 
         }
 
         $itemslug   = str_replace(" ", "-", $this->request->getPost('url_kategori'));
         $slug       = strtolower($itemslug);
 
         return [
-            'nama_kategori' => $this->request->getPost('nama_kategori'),
-            'parent'        => $this->request->getPost('parent'),
-            'foto_kategori' => $fileName,
-            'alt_foto'      => $this->request->getPost('alt_foto'),
-            'deskripsi'     => $this->request->getPost('deskripsi'),
-            'judul_seo'     => $this->request->getPost('judul_seo'),
-            'deskripsi_seo' => $this->request->getPost('deskripsi_seo'),
-            'url_kategori'  => $slug
+            'nama_kategori'         => $this->request->getPost('nama_kategori'),
+            'parent'                => $this->request->getPost('parent'),
+            'foto_kategori'         => $fileName,
+            'alt_foto'              => $this->request->getPost('alt_foto'),
+            'judul_seo_kategori'    => $this->request->getPost('judul_seo_kategori'),
+            'deskripsi_seo_kategori'=> $this->request->getPost('deskripsi_seo_kategori'),
+            'url_kategori'          => $slug
         ];
     }
 
@@ -56,7 +55,7 @@ class KategoriController extends BaseController
 
     public function store()
     {
-        if(!$this->validate($this->objKategori->getRules()))
+        if(!$this->validate($this->objKategori->getCreateRules()))
         {
             return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
@@ -74,7 +73,7 @@ class KategoriController extends BaseController
                 'id_slug'   => '',
                 'slug'      => $kategori['url_kategori'],
                 'target'    => 'Home::category/'.$kategoriDisimpan->id_kategori,
-                'filter'    => ''
+                'filters'   => ''
             );
 
             $this->objSlug->saveData($arrRoute);
@@ -108,7 +107,7 @@ class KategoriController extends BaseController
 
     public function update($id_kategori)
     {
-        if(!$this->validate($this->objKategori->getRules()))
+        if(!$this->validate($this->objKategori->getUpdateRules()))
         {
             return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
@@ -141,7 +140,7 @@ class KategoriController extends BaseController
                     'id_slug'   => '',
                     'slug'      => $kategori['url_kategori'],
                     'target'    => 'Home::category/'.$kategoriDisimpan->kategori_id,
-                    'filter'    => ''
+                    'filters'   => ''
                 );
 
                 $this->objSlug->saveData($arrRoute);

@@ -88,8 +88,8 @@
                                     <td><?= $kategori['nama_kategori']; ?></td>
                                     <td><?= is_null($kategori['parent']) ? "No Parent" : $kategori['parent']; ?></td>
                                     <td class="d-flex justify-content-evenly">
-                                        <a href="<?= base_url('admin/kategori/edit/'.$kategori['kategori_id']) ?>" class="btn btn-info">Edit</a>&nbsp;&nbsp;
-                                        <form action="/admin/kategori/<?= $kategori['kategori_id'] ?>" method="POST">
+                                        <a href="<?= base_url('admin/kategori/edit/'.$kategori['id_kategori']) ?>" class="btn btn-info">Edit</a>&nbsp;&nbsp;
+                                        <form action="/admin/kategori/<?= $kategori['id_kategori'] ?>" method="POST">
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="_method" value="DELETE">
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus Kategori ini?');">Delete</button>

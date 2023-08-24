@@ -32,7 +32,7 @@
 
     <!-- Form Kategori -->
     <?php if (isset($dataKategori->id_kategori)) : ?>
-        <form action="<?= base_url(); ?>/admin/kategori/<?= $dataKategori->kategori_id ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url(); ?>/admin/kategori/<?= $dataKategori->id_kategori ?>" method="post" enctype="multipart/form-data">
     <?php else : ?>
         <form action="<?= base_url(); ?>/admin/kategori" method="post" enctype="multipart/form-data">
     <?php endif; ?>
@@ -41,7 +41,6 @@
 
             <?= csrf_field(); ?>
 
-            <input type="hidden" name="_method" value="PUT" />
 
             <div class="offset-lg-1 col-lg-10 mt-3">
 
@@ -63,19 +62,22 @@
                                 <img class="card-img mb-3 w-25" src="<?= base_url(); ?>/assets/images/<?= $dataKategori->foto_kategori; ?>">
                             <?php endif; ?>
                         </div>
+                        <div class="text-center mb-4">
+                            <h5 style="color:black; margin-top:-5px;">Foto Saat Ini</h5>
+                        </div>
 
                         <div class="form-group row">
                             <label class="offset-lg-1 col-xl-2 col-md-2 form-label">Foto Kategori</label>
                             <div class="col-xl-8 col-md-6">
-                                <input type="file" name="foto_kategori">
+                                <input type="file" name="foto_kategori" id="foto_kategori">
                                 <input type="text" name="image_path" class="form-control" value="<?= isset($dataKategori->foto_kategori) ? $dataKategori->foto_kategori : old(esc('foto_kategori')) ?>" hidden>
                                 <?php if($session->getFlashdata('validation')) : ?>
                                     <?php if(isset($validationErrors['foto_kategori'])) : ?>
                                         <p class="text-danger">*<?= $validationErrors['foto_kategori'] ?></p>
                                     <?php endif; ?>
                                 <?php endif; ?>
+                                <div id="imagePreview"></div>
                             </div>
-                            
                         </div>
 
                         <div class="form-group row">
@@ -108,10 +110,10 @@
                                 <select name="parent" class="form-control <?= isset($validationErrors['parent']) ? 'is-invalid' : '' ?>">
                                     <option value="0">No Parent</option>
                                     <?php foreach($dataParent as $parent) : ?>
-                                        <?php if($dataKategori->parent === $parent['kategori_id']) : ?>
-                                            <option selected value="<?= $parent['kategori_id'] ?>"><?= $parent['nama_kategori'] ?></option>
+                                        <?php if($dataKategori->parent === $parent['id_kategori']) : ?>
+                                            <option selected value="<?= $parent['id_kategori'] ?>"><?= $parent['nama_kategori'] ?></option>
                                         <?php else : ?>
-                                            <option value="<?= $parent['kategori_id'] ?>"><?= $parent['nama_kategori'] ?></option>
+                                            <option value="<?= $parent['id_kategori'] ?>"><?= $parent['nama_kategori'] ?></option>
                                         <?php endif; ?>
                                     <?php endforeach; ?>
                                 </select>
@@ -135,20 +137,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label class="offset-lg-1 col-xl-2 col-md-2 form-label">Deskripsi</label>
-                            <div class="col-xl-8 col-md-6">
-                                <textarea id="summernote" name="deskripsi" rows="3"><?= isset($dataKategori->deskripsi) ? $dataKategori->deskripsi : old('deskripsi') ?></textarea>
-                                <div class="button_set mt-1">
-                                </div>
-                                <?php if($session->getFlashdata('validation')) : ?>
-                                    <?php if(isset($validationErrors['deskripsi'])) : ?>
-                                        <p class="text-danger">*<?= $validationErrors['deskripsi'] ?></p>
-                                    <?php endif; ?>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
@@ -166,10 +154,10 @@
                         <div class="form-group row">
                             <label class="offset-lg-1 col-xl-2 col-md-2 form-label">Judul SEO</label>
                             <div class="col-xl-8 col-md-6">
-                                <input type="text" name="judul_seo" class="form-control <?= isset($validationErrors['judul_seo']) ? 'is-invalid' : '' ?>" value="<?= isset($dataKategori->judul_seo) ? $dataKategori->judul_seo : old(esc('judul_seo')) ?>">
+                                <input type="text" name="judul_seo_kategori" class="form-control <?= isset($validationErrors['judul_seo_kategori']) ? 'is-invalid' : '' ?>" value="<?= isset($dataKategori->judul_seo_kategori) ? $dataKategori->judul_seo_kategori : old(esc('judul_seo_kategori')) ?>">
                                 <?php if($session->getFlashdata('validation')) : ?>
-                                    <?php if(isset($validationErrors['judul_seo'])) : ?>
-                                        <p class="text-danger">*<?= $validationErrors['judul_seo'] ?></p>
+                                    <?php if(isset($validationErrors['judul_seo_kategori'])) : ?>
+                                        <p class="text-danger">*<?= $validationErrors['judul_seo_kategori'] ?></p>
                                     <?php endif; ?>
                                 <?php endif; ?>
                             </div>
@@ -178,10 +166,10 @@
                         <div class="form-group row">
                             <label class="offset-lg-1 col-xl-2 col-md-2 form-label">Deskripsi SEO</label>
                             <div class="col-xl-8 col-md-6">
-                                <input type="text" name="deskripsi_seo" class="form-control <?= isset($validationErrors['deskripsi_seo']) ? 'is-invalid' : '' ?>" value="<?= isset($dataKategori->deskripsi_seo) ? $dataKategori->deskripsi_seo : old(esc('deskripsi_seo')) ?>">
+                                <input type="text" name="deskripsi_seo_kategori" class="form-control <?= isset($validationErrors['deskripsi_seo_kategori']) ? 'is-invalid' : '' ?>" value="<?= isset($dataKategori->deskripsi_seo_kategori) ? $dataKategori->deskripsi_seo_kategori : old(esc('deskripsi_seo_kategori')) ?>">
                                 <?php if($session->getFlashdata('validation')) : ?>
-                                    <?php if(isset($validationErrors['deskripsi_seo'])) : ?>
-                                        <p class="text-danger">*<?= $validationErrors['deskripsi_seo'] ?></p>
+                                    <?php if(isset($validationErrors['deskripsi_seo_kategori'])) : ?>
+                                        <p class="text-danger">*<?= $validationErrors['deskripsi_seo_kategori'] ?></p>
                                     <?php endif; ?>
                                 <?php endif; ?>
                             </div>
@@ -206,14 +194,17 @@
 
 <?= $this->section('specific-js') ?>
     <!-- Taruh spesifik js untuk tiap halaman disini -->
-    <script type="text/javascript" src="<?= base_url('admin-assets/vendor/summernote/summernote.min.js'); ?>"></script>
     <script>
         $(document).ready(function() {
-            $('#summernote').summernote({
-                height: 200,
-                minHeight: null,
-                maxHeight: null,             
-                focus: true
+            $('#foto_kategori').on('change', function(event) {
+                var selectedFile = event.target.files[0];
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                    $('#imagePreview').html('<h5 style="color:black; margin-top:20px;">Image Preview</h5><img class="card-img mb-3 w-50" src="' + event.target.result + '" alt="Selected Image">');
+                }
+
+                reader.readAsDataURL(selectedFile);
             });
         });
     </script>

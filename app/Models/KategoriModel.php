@@ -33,9 +33,8 @@ class KategoriModel extends Model
         ],
         'foto_kategori'  => [
             'label' =>'Foto Kategori',
-            'rules'	=>'required|uploaded[foto]|is_image[foto]|max_size[foto,1024]|ext_in[foto,jpg,png,jpeg]',
+            'rules'	=>'uploaded[foto_kategori]|is_image[foto_kategori]|max_size[foto_kategori,1024]|ext_in[foto_kategori,jpg,png,jpeg]',
             'errors'=> [
-                'required'  =>'Foto Kategori harus diisi',
                 'uploaded'  =>'Foto Kategori harus terupload',
                 'is_image'  =>'Harus mengupload foto',
                 'max_size'  =>'Maks. size foto 1MB',
@@ -47,13 +46,6 @@ class KategoriModel extends Model
             'rules'	=> 'required',
             'errors'=> [
                 'required'=>'Isi alt. foto dengan deskripsi foto',
-            ]
-        ],
-        'deskripsi' => [
-            'label' => 'Deskripsi',
-            'rules'	=> 'required',
-            'errors'=> [
-                'required'=>'Deskripsi harus diisi',
             ]
         ],
         'judul_seo' => [
@@ -98,13 +90,6 @@ class KategoriModel extends Model
             'rules'	=> 'required',
             'errors'=> [
                 'required'=>'Isi alt. foto dengan deskripsi foto',
-            ]
-        ],
-        'deskripsi' => [
-            'label' => 'Deskripsi',
-            'rules'	=> 'required',
-            'errors'=> [
-                'required'=>'Deskripsi harus diisi',
             ]
         ],
         'judul_seo' => [
