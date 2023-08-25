@@ -121,25 +121,25 @@ class KategoriController extends BaseController
             $cariIdKategori     = array('nama_kategori' => $this->request->getPost('nama_kategori'));
             $kategoriDisimpan   = $this->objKategori->getDataBy($cariIdKategori)->getRow();
 
-            $paramIdSlug    = array('id_slug'=>$kategoriDisimpan->id_slug);
+            $paramIdSlug    = array('id_slug'=>$kategoriDisimpan->slug_id);
             $totalItemRoute = $this->objSlug->getTotalItem($paramIdSlug);
             
             if($totalItemRoute > 0)
             {
                 $arrRoute=array(
                     'slug'      => $kategori['url_kategori'],
-                    'target'    => 'Home::category/'.$kategoriDisimpan->kategori_id,
+                    'target'    => 'Home::category/'.$kategoriDisimpan->id_kategori,
                     'filters'    => ''
                 );
 
-                $this->objSlug->saveData($arrRoute,$kategoriDisimpan->id_slug);
+                $this->objSlug->saveData($arrRoute,$kategoriDisimpan->slug_id);
             }
             else
             {
                 $arrRoute=array(
                     'id_slug'   => '',
                     'slug'      => $kategori['url_kategori'],
-                    'target'    => 'Home::category/'.$kategoriDisimpan->kategori_id,
+                    'target'    => 'Home::category/'.$kategoriDisimpan->id_kategori,
                     'filters'   => ''
                 );
 

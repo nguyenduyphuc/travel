@@ -61,8 +61,8 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduk"
                     aria-expanded="true" aria-controls="collapseProduk">
-                    <i class="fas fa-snowboarding"></i>
-                    <span>Aktivitas</span>
+                    <i class="fas fa-mountain"></i>
+                    <span>Produk</span>
                 </a>
                 <div id="collapseProduk" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">

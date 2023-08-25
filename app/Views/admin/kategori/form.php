@@ -41,6 +41,10 @@
 
             <?= csrf_field(); ?>
 
+            <?php if(isset($dataKategori->id_kategori)) : ?>
+                <input type="hidden" name="_method" value="PUT" />
+            <?php endif; ?>
+
             <div class="offset-lg-1 col-lg-10 mt-3">
 
                 <?php if($session->getFlashdata('error')) : ?>

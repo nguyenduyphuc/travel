@@ -46,10 +46,9 @@ class ProdukModel extends Model
             ]
         ],
         'foto_produk'  => [
-            'label' =>'Foto Produk',
-            'rules'	=>'required|uploaded[foto]|is_image[foto]|max_size[foto,1024]|ext_in[foto,jpg,png,jpeg]',
+            'label' =>'Foto Kategori',
+            'rules'	=>'uploaded[foto_produk]|is_image[foto_produk]|max_size[foto_produk,1024]|ext_in[foto_produk,jpg,png,jpeg]',
             'errors'=> [
-                'required'  =>'Foto Produk harus diisi',
                 'uploaded'  =>'Foto Produk harus terupload',
                 'is_image'  =>'Harus mengupload foto',
                 'max_size'  =>'Maks. size foto 1MB',

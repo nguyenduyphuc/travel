@@ -88,8 +88,8 @@
                                     <td><?= $itemProduk->nama_produk; ?></td>
                                     <td>Rp. <?= number_format($itemProduk->harga,0,',','.'); ?></td>
                                     <td class="d-flex justify-content-evenly">
-                                        <a href="<?= base_url('admin/produk/edit/'.$itemProduk->produk_id) ?>" class="btn btn-info">Edit</a>&nbsp;&nbsp;
-                                        <form action="/admin/produk/<?= $itemProduk->produk_id ?>" method="POST">
+                                        <a href="<?= base_url('admin/produk/edit/'.$itemProduk->id_produk) ?>" class="btn btn-info">Edit</a>&nbsp;&nbsp;
+                                        <form action="/admin/produk/<?= $itemProduk->id_produk ?>" method="POST">
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="_method" value="DELETE">
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus aktivitas ini?');">Delete</button>
