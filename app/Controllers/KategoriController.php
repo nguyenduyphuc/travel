@@ -18,7 +18,7 @@ class KategoriController extends BaseController
         }
         else
         {
-            $fileName = (array_key_exists('foto_kategori', $this->request->getPost())) ? $this->request->getPost('foto_kategori') : "no-image.jpg"; 
+            $fileName = (array_key_exists('image_path', $this->request->getPost())) ? $this->request->getPost('image_path') : "no-image.jpg"; 
         }
 
         $itemslug   = str_replace(" ", "-", $this->request->getPost('url_kategori'));

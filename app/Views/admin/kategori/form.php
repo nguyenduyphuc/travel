@@ -41,7 +41,6 @@
 
             <?= csrf_field(); ?>
 
-
             <div class="offset-lg-1 col-lg-10 mt-3">
 
                 <?php if($session->getFlashdata('error')) : ?>
