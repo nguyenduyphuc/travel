@@ -48,14 +48,14 @@ class KategoriModel extends Model
                 'required'=>'Isi alt. foto dengan deskripsi foto',
             ]
         ],
-        'judul_seo' => [
+        'judul_seo_kategori' => [
             'label' => 'Judul SEO Kategori',
             'rules'	=> 'required',
             'errors'=> [
                 'required'=>'Judul SEO Kategori harus diisi',
             ]
         ],
-        'deskripsi_seo' => [
+        'deskripsi_seo_kategori' => [
             'label' => 'Deskripsi SEO Kategori',
             'rules'	=> 'required',
             'errors'=> [
@@ -92,14 +92,14 @@ class KategoriModel extends Model
                 'required'=>'Isi alt. foto dengan deskripsi foto',
             ]
         ],
-        'judul_seo' => [
+        'judul_seo_kategori' => [
             'label' => 'Judul SEO Kategori',
             'rules'	=> 'required',
             'errors'=> [
                 'required'=>'Judul SEO Kategori harus diisi',
             ]
         ],
-        'deskripsi_seo' => [
+        'deskripsi_seo_kategori' => [
             'label' => 'Deskripsi SEO Kategori',
             'rules'	=> 'required',
             'errors'=> [

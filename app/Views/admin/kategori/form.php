@@ -57,14 +57,14 @@
 
                     <div class="card-body">
 
-                        <div class="d-flex justify-content-center">
-                            <?php if(isset($dataKategori->foto_kategori)) : ?>
+                        <?php if(isset($dataKategori->foto_kategori)) : ?>
+                            <div class="d-flex justify-content-center">
                                 <img class="card-img mb-3 w-25" src="<?= base_url(); ?>/assets/images/<?= $dataKategori->foto_kategori; ?>">
-                            <?php endif; ?>
-                        </div>
-                        <div class="text-center mb-4">
-                            <h5 style="color:black; margin-top:-5px;">Foto Saat Ini</h5>
-                        </div>
+                            </div>
+                            <div class="text-center mb-4">
+                                <h5 style="color:black; margin-top:-5px;">Foto Saat Ini</h5>
+                            </div>
+                        <?php endif; ?>
 
                         <div class="form-group row">
                             <label class="offset-lg-1 col-xl-2 col-md-2 form-label">Foto Kategori</label>
@@ -110,11 +110,7 @@
                                 <select name="parent" class="form-control <?= isset($validationErrors['parent']) ? 'is-invalid' : '' ?>">
                                     <option value="0">No Parent</option>
                                     <?php foreach($dataParent as $parent) : ?>
-                                        <?php if($dataKategori->parent === $parent['id_kategori']) : ?>
-                                            <option selected value="<?= $parent['id_kategori'] ?>"><?= $parent['nama_kategori'] ?></option>
-                                        <?php else : ?>
                                             <option value="<?= $parent['id_kategori'] ?>"><?= $parent['nama_kategori'] ?></option>
-                                        <?php endif; ?>
                                     <?php endforeach; ?>
                                 </select>
                                 <?php if($session->getFlashdata('validation')) : ?>

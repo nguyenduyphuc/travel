@@ -81,7 +81,7 @@ class KategoriController extends BaseController
             $cariIdSlug         = array('slug'=>$kategori['url_kategori']);
             $slugDisimpan       = $this->objSlug->getDataBy($cariIdSlug)->getRow();
 
-            $saveIdSlug         = array('slug_id' => $slugDisimpan->id_kategori);
+            $saveIdSlug         = array('slug_id' => $slugDisimpan->id_slug);
 
             $this->objKategori->saveData($saveIdSlug, $kategoriDisimpan->id_kategori);
 
@@ -129,7 +129,7 @@ class KategoriController extends BaseController
                 $arrRoute=array(
                     'slug'      => $kategori['url_kategori'],
                     'target'    => 'Home::category/'.$kategoriDisimpan->kategori_id,
-                    'filter'    => ''
+                    'filters'    => ''
                 );
 
                 $this->objSlug->saveData($arrRoute,$kategoriDisimpan->id_slug);
