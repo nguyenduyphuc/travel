@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class ProdukTermasukController extends BaseController
+class ProdukTidakTermasukController extends BaseController
 {
     private function itemBuilder()
     {
@@ -17,10 +17,10 @@ class ProdukTermasukController extends BaseController
     public function index()
     {
         $data = [
-            'dataInclusion' => $this->objTermasuk->getAllData()->getResult()
+            'dataExclusion' => $this->objTakTermasuk->getAllData()->getResult()
         ];
 
-        return view('admin/termasuk',$data);
+        return view('admin/ketentuan',$data);
     }
 
     public function create()
@@ -29,12 +29,12 @@ class ProdukTermasukController extends BaseController
             'dataProduk'    => $this->objProduk->getAllData()->getResult()
         ];
 
-        return view('admin/termasuk/form',$data);
+        return view('admin/tak_termasuk/form',$data);
     }
 
     public function store()
     {
-        if(!$this->validate($this->objTermasuk->getRules()))
+        if(!$this->validate($this->objTakTermasuk->getRules()))
         {
             return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
@@ -43,9 +43,9 @@ class ProdukTermasukController extends BaseController
 
         try
         {
-            $this->objTermasuk->saveData($termasuk);
+            $this->objTakTermasuk->saveData($termasuk);
 
-            return redirect()->to(base_url().'/admin/termasuk')->with('sukses', 'Data Berhasil Ditambahkan!');
+            return redirect()->to(base_url().'/admin/tak_termasuk')->with('sukses', 'Data Berhasil Ditambahkan!');
         }
         catch (\Exception $e)
         {
@@ -58,16 +58,16 @@ class ProdukTermasukController extends BaseController
         $paramTermasuk      = array('id_termasuk' => $id_termasuk);
 
         $data = [
-            'termasuk'    => $this->objTermasuk->getDataBy($paramTermasuk)->getRow(),
+            'termasuk'    => $this->objTakTermasuk->getDataBy($paramTermasuk)->getRow(),
             'dataProduk'    => $this->objProduk->getAllData()->getResult()
         ];
 
-        return view('admin/termasuk/form',$data);
+        return view('admin/tak_termasuk/form',$data);
     }
 
     public function update($id_termasuk)
     {
-        if(!$this->validate($this->objTermasuk->getRules()))
+        if(!$this->validate($this->objTakTermasuk->getRules()))
         {
             return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
@@ -76,9 +76,9 @@ class ProdukTermasukController extends BaseController
 
         try
         {
-            $this->objTermasuk->saveData($termasuk, $id_termasuk);
+            $this->objTakTermasuk->saveData($termasuk, $id_termasuk);
 
-            return redirect()->to(base_url().'/admin/termasuk')->with('sukses', 'Data Berhasil Diupdate!');
+            return redirect()->to(base_url().'/admin/tak_termasuk')->with('sukses', 'Data Berhasil Diupdate!');
         }
         catch (\Exception $e)
         {
@@ -92,13 +92,13 @@ class ProdukTermasukController extends BaseController
 
         try
         {
-            $this->objTermasuk->deleteData($paramTermasuk);
+            $this->objTakTermasuk->deleteData($paramTermasuk);
 
-            return redirect()->to(base_url().'/admin/termasuk')->with('sukses', 'Data Berhasil Dihapus!');
+            return redirect()->to(base_url().'/admin/tak_termasuk')->with('sukses', 'Data Berhasil Dihapus!');
         }
         catch (\Exception $e)
         {
-            return redirect()->to(base_url().'/admin/termasuk')->with('error', $e->getMessage());
+            return redirect()->to(base_url().'/admin/tak_termasuk')->with('error', $e->getMessage());
         }
     }
 }
