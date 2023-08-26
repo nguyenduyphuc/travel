@@ -64,4 +64,41 @@ class KetentuanController extends BaseController
 
         return view('admin/ketentuan/form',$data);
     }
+
+    public function update($id_ketentuan)
+    {
+        if(!$this->validate($this->objKetentuan->getRules()))
+        {
+            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+        }
+
+        $ketentuan = $this->itemBuilder();
+
+        try
+        {
+            $this->objKetentuan->saveData($ketentuan, $id_ketentuan);
+
+            return redirect()->to(base_url().'/admin/ketentuan')->with('sukses', 'Data Berhasil Diupdate!');
+        }
+        catch (\Exception $e)
+        {
+            return redirect()->back()->withInput()->with('error', $e->getMessage());
+        }
+    }
+
+    public function destroy($id_ketentuan)
+    {
+        $paramKetentuan  = array('$id_ketentuan' => $id_ketentuan);
+
+        try
+        {
+            $this->objKetentuan->deleteData($paramKetentuan);
+
+            return redirect()->to(base_url().'/admin/ketentuan')->with('sukses', 'Data Berhasil Dihapus!');
+        }
+        catch (\Exception $e)
+        {
+            return redirect()->to(base_url().'/admin/ketentuan')->with('error', $e->getMessage());
+        }
+    }
 }
