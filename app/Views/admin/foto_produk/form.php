@@ -7,6 +7,7 @@
 
 <?= $this->section('specific-css') ?>
     <!-- Taruh spesifik css untuk tiap halaman disini -->
+    <link href="<?= base_url('admin-assets/css/bootstrap-select.min.css') ?>" rel="stylesheet">
     <style>
         .p-admin{
             margin-bottom: -0.15rem; 
@@ -64,13 +65,14 @@
 
                             <label class="offset-lg-1 col-xl-2 col-md-2 form-label">Foto Produk</label>
                             <div class="col-xl-8 col-md-6">
-                                <input type="file" name="foto">
+                                <input type="file" name="foto" id="foto_produk">
                                 <input type="text" name="image_path" class="form-control" value="<?= isset($foto->foto) ? $foto->foto : old(esc('foto')) ?>" hidden>
                                 <?php if($session->getFlashdata('validation')) : ?>
                                     <?php if(isset($validationErrors['foto'])) : ?>
                                         <p class="text-danger">*<?= $validationErrors['foto'] ?></p>
                                     <?php endif; ?>
                                 <?php endif; ?>
+                                <div id="imagePreview"></div>
                             </div>
                             
                         </div>
@@ -90,7 +92,7 @@
                         <div class="form-group row">
                             <label class="offset-lg-1 col-xl-2 col-md-2 form-label">Produk</label>
                             <div class="col-xl-6 col-md-6">
-                                <select name="id_produk" class="form-control <?= isset($validationErrors['id_produk']) ? 'is-invalid' : '' ?>">
+                                <select name="id_produk" id="searchableSelect" class="selectpicker form-control <?= isset($validationErrors['id_produk']) ? 'is-invalid' : '' ?>">
                                     <?php foreach($dataProduk as $produk) : ?>
                                         <?php if(isset($foto->produk_id) && $foto->produk_id === $produk->id_produk) : ?>
                                             <option selected value="<?= $produk->id_produk ?>"><?= $produk->nama_produk ?></option>
@@ -130,4 +132,21 @@
 
 <?= $this->section('specific-js') ?>
     <!-- Taruh spesifik js untuk tiap halaman disini -->
+    <script src="<?= base_url('admin-assets/js/bootstrap-select.min.js') ?>"></script>
+    <script>
+        $(document).ready(function() {
+            $('#foto_produk').on('change', function(event) {
+                var selectedFile = event.target.files[0];
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                    $('#imagePreview').html('<h5 style="color:black; margin-top:20px;">Image Preview</h5><img class="card-img mb-3 w-50" src="' + event.target.result + '" alt="Selected Image">');
+                }
+
+                reader.readAsDataURL(selectedFile);
+            });
+
+            $('#searchableSelect').selectpicker();
+        });
+    </script>
 <?= $this->endSection() ?>
