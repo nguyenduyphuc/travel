@@ -45,4 +45,37 @@ class FotoProdukController extends BaseController
 
         return view('admin/foto_produk/form',$data);
     }
+
+    public function store()
+    {
+        if(!$this->validate($this->objFotoProduk->getCreateRules()))
+        {
+            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+        }
+
+        $fotoProduk = $this->itemBuilder();
+
+        try
+        {
+            $this->objFotoProduk->saveData($fotoProduk);
+
+            return redirect()->to(base_url().'/admin/foto_produk/index')->with('sukses', 'Data Berhasil Ditambahkan!');
+        }
+        catch (\Exception $e)
+        {
+            return redirect()->back()->withInput()->with('error', $e->getMessage());
+        }
+    }
+
+    public function edit($id_foto)
+    {
+        $paramFoto          = array('id_foto' => $id_foto);
+
+        $data = [
+            'foto'          => $this->objFotoProduk->getDataBy($paramFoto)->getRow(),
+            'dataProduk'    => $this->objProduk->getAllData()->getResult()
+        ];
+
+        return view('admin/edit_foto-produk_form',$data);
+    }
 }
