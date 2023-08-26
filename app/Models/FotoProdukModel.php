@@ -70,13 +70,13 @@ class FotoProdukModel extends Model
 
     public function getAllData()
     {
-        $this->builder->join('produks','foto_produks.id_produk=produks.produk_id');
+        $this->builder->join('produks','foto_produks.produk_id=produks.id_produk');
         return $this->builder->get();
     }
 
     public function getDataBy($param)
     {
-        $this->builder->join('produks','foto_produks.id_produk=produks.produk_id');
+        $this->builder->join('produks','foto_produks.produk_id=produks.id_produk');
         $this->builder->where($param);
         return $this->builder->get();
     }

@@ -13,7 +13,7 @@ class ProdukController extends BaseController
 
         if($file->isValid() && !$file->hasMoved())
         {
-            // $file->move($path, $file->getName());
+            $file->move($path, $file->getName());
             $fileName=$file->getName();
         }
         else
@@ -198,7 +198,7 @@ class ProdukController extends BaseController
 
         try
         {
-            $this->objSlug->deleteData(array('id_slug' => $produk->slug_if));
+            $this->objSlug->deleteData(array('id_slug' => $produk->slug_id));
 
             if($produk->foto_produk!="" and $produk->foto_produk!="no-image.jpg" and file_exists(realpath(APPPATH . './assets/images/products/'.$produk->foto_produk)))
             {

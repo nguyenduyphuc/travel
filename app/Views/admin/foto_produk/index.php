@@ -19,12 +19,12 @@
 <?= $this->section('content') ?>
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">List Produk</h1>
+            <h1 class="h3 mb-0 text-gray-800">List Foto Produk</h1>
         </div>
 
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="<?= route_to('admin'); ?>">Dashboard</a>
-            <li class="breadcrumb-item active">Produk</li>
+            <li class="breadcrumb-item active">Foto Produk</li>
         </ol>
 
         <!-- Content Row -->
@@ -54,7 +54,7 @@
 
         <div class="card mb-4">
             <div class="card-header">
-                <?= anchor('admin/produk/create','Add Data',array('class'=>'btn btn-info')); ?>
+                <?= anchor('admin/foto-produk/create','Add Data',array('class'=>'btn btn-info')); ?>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -62,43 +62,40 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Gambar</th>
-                                <th>Nama Produk</th>
-                                <th>Harga (USD)</th>
+                                <th>Foto</th>
+                                <th>Produk</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>No.</th>
-                                <th>Gambar</th>
-                                <th>Nama Produk</th>
-                                <th>Harga (USD)</th>
+                                <th>Foto</th>
+                                <th>Produk</th>
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>
                         <tbody>
                             <?php
                                 $no=1;
-                                foreach($dataProduk as $itemProduk)
-                            { ?>
+                                foreach($fotoProduk as $foto) :
+                            ?>
                                 <tr>
                                     <td><?= $no; ?></td>
-                                    <td><img class="card-img-top img-admin" src="<?= base_url() ?>/assets/images/products/<?= $itemProduk->foto_produk; ?>"></td>
-                                    <td><?= $itemProduk->nama_produk; ?></td>
-                                    <td><?= number_format($itemProduk->harga,0,',','.'); ?></td>
+                                    <td><img class="card-img-top img-admin" src="<?= base_url() ?>/assets/images/products/<?= $foto->foto ?>"></td>
+                                    <td><?= $foto->nama_produk ?></td>
                                     <td class="d-flex justify-content-evenly">
-                                        <a href="<?= base_url('admin/produk/edit/'.$itemProduk->id_produk) ?>" class="btn btn-info">Edit</a>&nbsp;&nbsp;
-                                        <form action="/admin/produk/<?= $itemProduk->id_produk ?>" method="POST">
+                                        <a href="<?= base_url('admin/foto-produk/edit/'.$foto->id_foto) ?>" class="btn btn-info">Edit</a>&nbsp;&nbsp;
+                                        <form action="/admin/foto-produk/<?= $foto->id_foto ?>" method="POST">
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus aktivitas ini?');">Delete</button>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus Kategori ini?');">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
                             <?php
                                 $no++;
-                                }
+                                endforeach;
                             ?>
                         </tbody>
                     </table>
