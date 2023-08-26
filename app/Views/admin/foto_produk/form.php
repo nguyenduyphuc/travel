@@ -21,17 +21,17 @@
 <?= $this->section('content') ?>
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><?= isset($dataFotoProduk->id_foto) ? 'Edit Foto Produk '.$dataFotoProduk->nama_produk : 'Tambah Foto Produk' ?></h1>
+        <h1 class="h3 mb-0 text-gray-800"><?= isset($foto->id_foto) ? 'Edit Foto Produk '.$foto->nama_produk : 'Tambah Foto Produk' ?></h1>
     </div>
 
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="<?= route_to('admin'); ?>">Dashboard</a>
         <li class="breadcrumb-item"><a href="<?= route_to('admin/foto-produk'); ?>">List Foto Produk</a></li>
-        <li class="breadcrumb-item active"><?= isset($foto->id_foto) ? 'Edit Foto Produk '.$dataFotoProduk->nama_produk : 'Tambah Foto Produk' ?></li>
+        <li class="breadcrumb-item active"><?= isset($foto->id_foto) ? 'Edit Foto Produk '.$foto->nama_produk : 'Tambah Foto Produk' ?></li>
     </ol>
 
     <!-- Form Kategori -->
-    <form action="<?= base_url(); ?>/admin/foto-produk/<?= isset($foto->id_foto) ? $dataFotoProduk->nama_produk : '' ?>" method="post" enctype="multipart/form-data">
+    <form action="<?= base_url(); ?>/admin/foto-produk/<?= isset($foto->id_foto) ? $foto->nama_produk : '' ?>" method="post" enctype="multipart/form-data">
 
         <div class="row">
 
@@ -92,7 +92,7 @@
                         <div class="form-group row">
                             <label class="offset-lg-1 col-xl-2 col-md-2 form-label">Produk</label>
                             <div class="col-xl-6 col-md-6">
-                                <select name="id_produk" id="searchableSelect" class="selectpicker form-control <?= isset($validationErrors['id_produk']) ? 'is-invalid' : '' ?>">
+                                <select name="produk_id" id="searchableSelect" class="selectpicker form-control <?= isset($validationErrors['id_produk']) ? 'is-invalid' : '' ?>">
                                     <?php foreach($dataProduk as $produk) : ?>
                                         <?php if(isset($foto->produk_id) && $foto->produk_id === $produk->id_produk) : ?>
                                             <option selected value="<?= $produk->id_produk ?>"><?= $produk->nama_produk ?></option>

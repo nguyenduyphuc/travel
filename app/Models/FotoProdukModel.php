@@ -19,9 +19,8 @@ class FotoProdukModel extends Model
     protected $createRules      = [
         'foto'  => [
             'label' =>'Foto Produk',
-            'rules'	=>'required|uploaded[foto]|is_image[foto]|max_size[foto,1024]|ext_in[foto,jpg,png,jpeg]',
+            'rules'	=>'uploaded[foto]|is_image[foto]|max_size[foto,1024]|ext_in[foto,jpg,png,jpeg]',
             'errors'=> [
-                'required'  =>'Foto Produk harus diisi',
                 'uploaded'  =>'Foto Produk harus terupload',
                 'is_image'  =>'Harus mengupload foto',
                 'max_size'  =>'Maks. size foto 1MB',

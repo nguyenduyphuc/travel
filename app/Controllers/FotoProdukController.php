@@ -24,7 +24,7 @@ class FotoProdukController extends BaseController
         return [
             'foto'      => $fileName,
             'alt_foto'  => $this->request->getPost('alt_foto'),
-            'id_produk' => $this->request->getPost('id_produk')
+            'produk_id' => $this->request->getPost('produk_id')
         ];
     }
 
@@ -59,7 +59,7 @@ class FotoProdukController extends BaseController
         {
             $this->objFotoProduk->saveData($fotoProduk);
 
-            return redirect()->to(base_url().'/admin/foto_produk/index')->with('sukses', 'Data Berhasil Ditambahkan!');
+            return redirect()->to(base_url().'/admin/foto-produk/index')->with('sukses', 'Data Berhasil Ditambahkan!');
         }
         catch (\Exception $e)
         {
@@ -76,6 +76,49 @@ class FotoProdukController extends BaseController
             'dataProduk'    => $this->objProduk->getAllData()->getResult()
         ];
 
-        return view('admin/edit_foto-produk_form',$data);
+        return view('admin/foto_produk/form',$data);
+    }
+
+    public function update($id_foto)
+    {
+        if(!$this->validate($this->objFotoProduk->getUpdateRules()))
+        {
+            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+        }
+
+        $fotoProduk = $this->itemBuilder();
+
+        try
+        {
+            $this->objFotoProduk->saveData($fotoProduk, $id_foto);
+
+            return redirect()->to(base_url().'/admin/foto-produk')->with('sukses', 'Data Berhasil Diupdate!');
+        }
+        catch (\Exception $e)
+        {
+            return redirect()->back()->withInput()->with('error', $e->getMessage());
+        }
+    }
+
+    public function destroy($id_foto)
+    {
+        $paramFoto  = array('id_foto' => $id_foto);
+        $foto       = $this->objFotoProduk->getDataBy($paramFoto)->getRow();
+
+        try
+        {
+            if($foto->foto!="" and $foto->foto!="no-image.jpg" and file_exists(realpath(APPPATH . './assets/images/products/'.$foto->foto)))
+            {
+                unlink(realpath(APPPATH . './assets/images/products/'.$foto->foto));
+            }
+            
+            $this->objFotoProduk->deleteData($paramFoto);
+
+            return redirect()->to(base_url().'/admin/foto-produk')->with('sukses', 'Data Berhasil Dihapus!');
+        }
+        catch (\Exception $e)
+        {
+            return redirect()->to(base_url().'/admin/foto-produk')->with('error', $e->getMessage());
+        }
     }
 }
