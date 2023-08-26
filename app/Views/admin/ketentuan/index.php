@@ -89,7 +89,7 @@
                                         <form action="/admin/ketentuan/<?= $ketentuan->id_ketentuan ?>" method="POST">
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus Kategori ini?');">Delete</button>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>
                                         </form>
                                     </td>
                                 </tr>

@@ -19,12 +19,12 @@
 <?= $this->section('content') ?>
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">List Produk Inclusion</h1>
+            <h1 class="h3 mb-0 text-gray-800">List Produk Exclusion</h1>
         </div>
 
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="<?= route_to('admin'); ?>">Dashboard</a>
-            <li class="breadcrumb-item active">Produk Inclusion</li>
+            <li class="breadcrumb-item active">Produk Exclusion</li>
         </ol>
 
         <!-- Content Row -->
@@ -54,7 +54,7 @@
 
         <div class="card mb-4">
             <div class="card-header">
-                <?= anchor('admin/termasuk/create','Add Data',array('class'=>'btn btn-info')); ?>
+                <?= anchor('admin/tak-termasuk/create','Add Data',array('class'=>'btn btn-info')); ?>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -62,7 +62,7 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Produk Inclusion</th>
+                                <th>Produk Exclusion</th>
                                 <th>Produk</th>
                                 <th>Aksi</th>
                             </tr>
@@ -70,7 +70,7 @@
                         <tfoot>
                             <tr>
                                 <th>No.</th>
-                                <th>Produk Inclusion</th>
+                                <th>Produk Exclusion</th>
                                 <th>Produk</th>
                                 <th>Aksi</th>
                             </tr>
@@ -78,18 +78,18 @@
                         <tbody>
                             <?php
                                 $no=1;
-                                foreach($dataInclusion as $termasuk) :
+                                foreach($dataExclusion as $termasuk) :
                             ?>
                                 <tr>
                                     <td><?= $no; ?></td>
                                     <td><?= $termasuk->deskripsi ?></td>
                                     <td><?= $termasuk->nama_produk ?></td>
                                     <td class="d-flex justify-content-evenly">
-                                        <a href="<?= base_url('admin/termasuk/edit/'.$termasuk->id_termasuk) ?>" class="btn btn-info">Edit</a>&nbsp;&nbsp;
-                                        <form action="/admin/termasuk/<?= $termasuk->id_termasuk ?>" method="POST">
+                                        <a href="<?= base_url('admin/tak-termasuk/edit/'.$termasuk->id_tidak_termasuk) ?>" class="btn btn-info">Edit</a>&nbsp;&nbsp;
+                                        <form action="/admin/tak-termasuk/<?= $termasuk->id_tidak_termasuk ?>" method="POST">
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus Kategori ini?');">Delete</button>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus ini?');">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
