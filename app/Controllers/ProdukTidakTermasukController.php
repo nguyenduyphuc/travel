@@ -20,7 +20,7 @@ class ProdukTidakTermasukController extends BaseController
             'dataExclusion' => $this->objTakTermasuk->getAllData()->getResult()
         ];
 
-        return view('admin/ketentuan',$data);
+        return view('admin/tak_termasuk',$data);
     }
 
     public function create()
@@ -39,13 +39,13 @@ class ProdukTidakTermasukController extends BaseController
             return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
 
-        $termasuk = $this->itemBuilder();
+        $tak_termasuk = $this->itemBuilder();
 
         try
         {
-            $this->objTakTermasuk->saveData($termasuk);
+            $this->objTakTermasuk->saveData($tak_termasuk);
 
-            return redirect()->to(base_url().'/admin/tak_termasuk')->with('sukses', 'Data Berhasil Ditambahkan!');
+            return redirect()->to(base_url().'/admin/tak-termasuk')->with('sukses', 'Data Berhasil Ditambahkan!');
         }
         catch (\Exception $e)
         {
@@ -53,32 +53,32 @@ class ProdukTidakTermasukController extends BaseController
         }
     }
 
-    public function edit($id_termasuk)
+    public function edit($id_tidak_termasuk)
     {
-        $paramTermasuk      = array('id_termasuk' => $id_termasuk);
+        $paramTidakTermasuk = array('id_tidak_termasuk' => $id_tidak_termasuk);
 
         $data = [
-            'termasuk'    => $this->objTakTermasuk->getDataBy($paramTermasuk)->getRow(),
+            'tak_termasuk'  => $this->objTakTermasuk->getDataBy($paramTidakTermasuk)->getRow(),
             'dataProduk'    => $this->objProduk->getAllData()->getResult()
         ];
 
         return view('admin/tak_termasuk/form',$data);
     }
 
-    public function update($id_termasuk)
+    public function update($id_tidak_termasuk)
     {
         if(!$this->validate($this->objTakTermasuk->getRules()))
         {
             return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
 
-        $termasuk = $this->itemBuilder();
+        $tak_termasuk = $this->itemBuilder();
 
         try
         {
-            $this->objTakTermasuk->saveData($termasuk, $id_termasuk);
+            $this->objTakTermasuk->saveData($tak_termasuk, $id_tidak_termasuk);
 
-            return redirect()->to(base_url().'/admin/tak_termasuk')->with('sukses', 'Data Berhasil Diupdate!');
+            return redirect()->to(base_url().'/admin/tak-termasuk')->with('sukses', 'Data Berhasil Diupdate!');
         }
         catch (\Exception $e)
         {
@@ -86,19 +86,19 @@ class ProdukTidakTermasukController extends BaseController
         }
     }
 
-    public function destroy($id_termasuk)
+    public function destroy($id_tidak_termasuk)
     {
-        $paramTermasuk  = array('$id_termasuk' => $id_termasuk);
+        $paramTidakTermasuk  = array('$id_tidak_termasuk' => $id_tidak_termasuk);
 
         try
         {
-            $this->objTakTermasuk->deleteData($paramTermasuk);
+            $this->objTakTermasuk->deleteData($paramTidakTermasuk);
 
-            return redirect()->to(base_url().'/admin/tak_termasuk')->with('sukses', 'Data Berhasil Dihapus!');
+            return redirect()->to(base_url().'/admin/tak-termasuk')->with('sukses', 'Data Berhasil Dihapus!');
         }
         catch (\Exception $e)
         {
-            return redirect()->to(base_url().'/admin/tak_termasuk')->with('error', $e->getMessage());
+            return redirect()->to(base_url().'/admin/tak-termasuk')->with('error', $e->getMessage());
         }
     }
 }
