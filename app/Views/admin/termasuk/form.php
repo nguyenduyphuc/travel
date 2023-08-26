@@ -20,23 +20,23 @@
 <?= $this->section('content') ?>
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><?= isset($ketentuan->id_ketentuan) ? 'Edit Ketentuan Produk '.$ketentuan->nama_produk : 'Tambah ketentuan Produk' ?></h1>
+        <h1 class="h3 mb-0 text-gray-800"><?= isset($termasuk->id_termasuk) ? 'Edit '.$termasuk->nama_produk. ' Inclusion' : 'Tambah Produk Inclusion' ?></h1>
     </div>
 
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="<?= route_to('admin'); ?>">Dashboard</a>
-        <li class="breadcrumb-item"><a href="<?= route_to('admin/ketentuan'); ?>">Ketentuan Produk List</a></li>
-        <li class="breadcrumb-item active"><?= isset($ketentuan->id_ketentuan) ? 'Edit Ketentuan Produk '.$ketentuan->nama_produk : 'Tambah ketentuan Produk' ?></li>
+        <li class="breadcrumb-item"><a href="<?= route_to('admin/termasuk'); ?>">Produk Inclusion List</a></li>
+        <li class="breadcrumb-item active"><?= isset($termasuk->id_termasuk) ? 'Edit '.$termasuk->nama_produk. ' Inclusion' : 'Tambah Produk Inclusion' ?></li>
     </ol>
 
     <!-- Form Kategori -->
-    <form action="<?= base_url(); ?>/admin/ketentuan/<?= isset($ketentuan->id_ketentuan) ? $ketentuan->id_ketentuan : '' ?>" method="post" enctype="multipart/form-data">
+    <form action="<?= base_url(); ?>/admin/termasuk/<?= isset($termasuk->id_termasuk) ? $termasuk->id_termasuk : '' ?>" method="post" enctype="multipart/form-data">
 
         <div class="row">
 
             <?= csrf_field(); ?>
 
-            <?php if(isset($ketentuan->id_ketentuan)) : ?>
+            <?php if(isset($termasuk->id_termasuk)) : ?>
                 <input type="hidden" name="_method" value="PUT" />
             <?php endif; ?>
 
@@ -50,13 +50,13 @@
 
                 <div class="card h-auto">
                     <div class="card-header bg-gradient-primary">
-                        <p class="h4 text-white text-center">Ketentuan Produk</p>
+                        <p class="h4 text-white text-center">Produk Inclusion</p>
                     </div>
 
                     <div class="card-body">
                         <div class="form-group row">
 
-                            <label class="offset-lg-1 col-xl-2 col-md-2 form-label">ketentuan</label>
+                            <label class="offset-lg-1 col-xl-2 col-md-2 form-label">Produk Inclusion</label>
                             <div class="col-xl-8 col-md-6">
                                 <input type="text" name="deskripsi" class="form-control <?= isset($validationErrors['deskripsi']) ? 'is-invalid' : '' ?>"value="<?= isset($ketentuan->deskripsi) ? $ketentuan->deskripsi : old(esc('deskripsi')) ?>">
                                 <?php if($session->getFlashdata('validation')) : ?>
