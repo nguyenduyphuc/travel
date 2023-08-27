@@ -28,6 +28,26 @@ class SlugController extends BaseController
         return view('admin/slug/form');
     }
     
+    public function store()
+    {
+        if(!$this->validate($this->objSlug->getRules()))
+        {
+            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+        }
+
+        $slug = $this->itemBuilder();
+
+        try
+        {
+            $this->objSlug->saveData($slug);
+
+            return redirect()->to(base_url().'/admin/slug')->with('sukses', 'Data Berhasil Ditambahkan!');
+        }
+        catch (\Exception $e)
+        {
+            return redirect()->back()->withInput()->with('error', $e->getMessage());
+        }
+    }
 
     public function edit($id_slug)
     {
@@ -38,5 +58,42 @@ class SlugController extends BaseController
         ];
 
         return view('admin/slug/form',$data);
+    }
+
+    public function update($id_slug)
+    {
+        if(!$this->validate($this->objSlug->getRules()))
+        {
+            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+        }
+
+        $slug = $this->itemBuilder();
+
+        try
+        {
+            $this->objSlug->saveData($slug, $id_slug);
+
+            return redirect()->to(base_url().'/admin/slug')->with('sukses', 'Data Berhasil Diupdate!');
+        }
+        catch (\Exception $e)
+        {
+            return redirect()->back()->withInput()->with('error', $e->getMessage());
+        }
+    }
+
+    public function destroy($id_slug)
+    {
+        $paramSlug  = array('id_slug' => $id_slug);
+
+        try
+        {
+            $this->objSlug->deleteData($paramSlug);
+
+            return redirect()->to(base_url().'/admin/slug')->with('sukses', 'Data Berhasil Dihapus!');
+        }
+        catch (\Exception $e)
+        {
+            return redirect()->to(base_url().'/admin/slug')->with('error', $e->getMessage());
+        }
     }
 }
