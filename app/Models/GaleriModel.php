@@ -19,9 +19,8 @@ class GaleriModel extends Model
     protected $createRules      = [
         'foto'  => [
             'label' =>'Foto Galeri',
-            'rules'	=>'required|uploaded[foto]|is_image[foto]|max_size[foto,1024]|ext_in[foto,jpg,png,jpeg]',
+            'rules'	=>'uploaded[foto]|is_image[foto]|max_size[foto,1024]|ext_in[foto,jpg,png,jpeg]',
             'errors'=> [
-                'required'  =>'Foto Galeri harus diisi',
                 'uploaded'  =>'Foto Galeri harus terupload',
                 'is_image'  =>'Harus mengupload foto',
                 'max_size'  =>'Maks. size foto 1MB',
