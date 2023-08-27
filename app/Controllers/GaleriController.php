@@ -33,7 +33,7 @@ class GaleriController extends BaseController
             'dataGaleri' => $this->objGaleri->getAllData()->getResult()
         ];
 
-        return view('admin/galeri',$data);
+        return view('admin/galeri/index',$data);
     }
 
     public function create()

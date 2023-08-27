@@ -20,7 +20,7 @@ class KetentuanController extends BaseController
             'dataKetentuan' => $this->objKetentuan->getAllData()->getResult()
         ];
 
-        return view('admin/ketentuan',$data);
+        return view('admin/ketentuan/index',$data);
     }
 
     public function create()

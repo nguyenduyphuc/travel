@@ -20,7 +20,7 @@ class ProdukTidakTermasukController extends BaseController
             'dataExclusion' => $this->objTakTermasuk->getAllData()->getResult()
         ];
 
-        return view('admin/tak_termasuk',$data);
+        return view('admin/tak_termasuk/index',$data);
     }
 
     public function create()

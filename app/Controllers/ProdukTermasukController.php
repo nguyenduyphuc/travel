@@ -20,7 +20,7 @@ class ProdukTermasukController extends BaseController
             'dataInclusion' => $this->objTermasuk->getAllData()->getResult()
         ];
 
-        return view('admin/termasuk',$data);
+        return view('admin/termasuk/index',$data);
     }
 
     public function create()

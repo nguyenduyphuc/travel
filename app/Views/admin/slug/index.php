@@ -19,12 +19,12 @@
 <?= $this->section('content') ?>
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">List Foto Produk</h1>
+            <h1 class="h3 mb-0 text-gray-800">List Route</h1>
         </div>
 
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="<?= route_to('admin'); ?>">Dashboard</a>
-            <li class="breadcrumb-item active">Galeri</li>
+            <li class="breadcrumb-item active">Route</li>
         </ol>
 
         <!-- Content Row -->
@@ -54,7 +54,7 @@
 
         <div class="card mb-4">
             <div class="card-header">
-                <?= anchor('admin/galeeri/create','Add Data',array('class'=>'btn btn-info')); ?>
+                <?= anchor('admin/slug/create','Add Data',array('class'=>'btn btn-info')); ?>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -62,31 +62,34 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Foto</th>
-                                <th>Alt. Foto</th>
+                                <th>Slug</th>
+                                <th>Target</th>
+                                <th>Filter</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>No.</th>
-                                <th>Foto</th>
-                                <th>Alt. Foto</th>
+                                <th>Slug</th>
+                                <th>Target</th>
+                                <th>Filter</th>
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>
                         <tbody>
                             <?php
                                 $no=1;
-                                foreach($dataGaleri as $foto) :
+                                foreach($dataSlug as $slug) :
                             ?>
                                 <tr>
                                     <td><?= $no; ?></td>
-                                    <td><img class="card-img-top img-admin" src="<?= base_url() ?>/assets/images/gallery/<?= $foto->foto ?>"></td>
-                                    <td><?= $foto->alt_foto ?></td>
+                                    <td><?= $slug->slug ?></td>
+                                    <td><?= $slug->target ?></td>
+                                    <td><?= $slug->filters=="" ? "No Filter" : $slug->filters ?></td>
                                     <td class="d-flex justify-content-evenly">
-                                        <a href="<?= base_url('admin/galeri/edit/'.$foto->id_galeri) ?>" class="btn btn-info">Edit</a>&nbsp;&nbsp;
-                                        <form action="/admin/galeri/<?= $foto->id_galeri ?>" method="POST">
+                                        <a href="<?= base_url('admin/slug/edit/'.$slug->id_slug) ?>" class="btn btn-info">Edit</a>&nbsp;&nbsp;
+                                        <form action="/admin/slug/<?= $slug->id_slug ?>" method="POST">
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="_method" value="DELETE">
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus Kategori ini?');">Delete</button>
