@@ -46,7 +46,7 @@ class ProdukModel extends Model
             ]
         ],
         'foto_produk'  => [
-            'label' =>'Foto Kategori',
+            'label' =>'Foto Produk',
             'rules'	=>'uploaded[foto_produk]|is_image[foto_produk]|max_size[foto_produk,1024]|ext_in[foto_produk,jpg,png,jpeg]',
             'errors'=> [
                 'uploaded'  =>'Foto Produk harus terupload',
