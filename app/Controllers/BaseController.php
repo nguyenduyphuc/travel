@@ -17,6 +17,8 @@ use App\Models\SlugModel;
 use App\Models\ProdukTermasukModel;
 use App\Models\ProdukTidakTermasukModel;
 use App\Models\KetentuanModel;
+use App\Models\ReviewModel;
+use App\Models\FotoReviewModel;
 
 use App\Models\PagingGaleriModel;
 
@@ -70,6 +72,8 @@ abstract class BaseController extends Controller
         $this->objTermasuk      = new ProdukTermasukModel;
         $this->objTakTermasuk   = new ProdukTidakTermasukModel;
         $this->objKetentuan     = new KetentuanModel;
+        $this->objReview        = new ReviewModel;
+        $this->objFotoReview    = new FotoReviewModel;
 
         $this->objPagingGaleri  = new PagingGaleriModel;
 

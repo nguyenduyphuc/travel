@@ -14,4 +14,13 @@ class ReviewController extends BaseController
 
         return view('admin/review/index',$data);
     }
+
+    public function create()
+    {
+        $data = [
+            'dataProduk'    => $this->objProduk->getAllData()->getResult()
+        ];
+
+        return view('admin/review/form',$data);
+    }
 }
