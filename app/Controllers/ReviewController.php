@@ -8,6 +8,10 @@ class ReviewController extends BaseController
 {
     public function index()
     {
-        //
+        $data = [
+            'dataReview'	=> $this->objReview->getAllData(),
+        ];
+
+        return view('admin/review/index',$data);
     }
 }

@@ -118,12 +118,12 @@ $routes->group('admin/termasuk', static function ($routes)
 // Route CRUD Produk Tak Termasuk
 $routes->group('admin/tak-termasuk', static function ($routes) 
 {
-    $routes->get('', 'ProdukTakTermasukController');
-    $routes->get('create', 'ProdukTakTermasukController::create');
-    $routes->post('', 'ProdukTakTermasukController::store');
-    $routes->get('edit/(:num)', 'ProdukTakTermasukController::edit/$1');
-    $routes->put('(:num)', 'ProdukTakTermasukController::update/$1');
-    $routes->delete('(:num)', 'ProdukTakTermasukController::destroy/$1');
+    $routes->get('', 'ProdukTidakTermasukController');
+    $routes->get('create', 'ProdukTidakTermasukController::create');
+    $routes->post('', 'ProdukTidakTermasukController::store');
+    $routes->get('edit/(:num)', 'ProdukTidakTermasukController::edit/$1');
+    $routes->put('(:num)', 'ProdukTidakTermasukController::update/$1');
+    $routes->delete('(:num)', 'ProdukTidakTermasukController::destroy/$1');
 });
 
 // Route CRUD Ketentuan
@@ -135,6 +135,16 @@ $routes->group('admin/ketentuan', static function ($routes)
     $routes->get('edit/(:num)', 'KetentuanController::edit/$1');
     $routes->put('(:num)', 'KetentuanController::update/$1');
     $routes->delete('(:num)', 'KetentuanController::destroy/$1');
+});
+
+$routes->group('admin/review', static function ($routes) 
+{
+    $routes->get('', 'ReviewController');
+    $routes->get('create', 'ReviewController::create');
+    $routes->post('', 'ReviewController::store');
+    $routes->get('edit/(:num)', 'ReviewController::edit/$1');
+    $routes->put('(:num)', 'ReviewController::update/$1');
+    $routes->delete('(:num)', 'ReviewController::destroy/$1');
 });
 
 $routes->post('send-message','Home::sendMessage');
