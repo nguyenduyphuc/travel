@@ -9,7 +9,7 @@ class ReviewController extends BaseController
     public function index()
     {
         $data = [
-            'dataReview'	=> $this->objReview->getAllData(),
+            'dataReview'	=> $this->objReview->getAllData()->getResult(),
         ];
 
         return view('admin/review/index',$data);
@@ -23,4 +23,6 @@ class ReviewController extends BaseController
 
         return view('admin/review/form',$data);
     }
+
+    
 }
