@@ -101,12 +101,21 @@
                         <div class="form-group row">
                             <label class="col-xl-2 col-md-2 form-label">Rating</label>
                             <div class="col-xl-8 col-md-6">
-                                <span class="star fas fa-star <?= isset($review->rating)&&($review->rating == 1)||($review->rating == 5)?'star-checked':''; ?>" id="star_1" onclick="rate(1)"></span>
-                                <span class="star fas fa-star <?= isset($review->rating)&&($review->rating == 2)||($review->rating == 5)?'star-checked':'' ?>" id="star_2" onclick="rate(2)"></span>
-                                <span class="star fas fa-star <?= isset($review->rating)&&($review->rating == 3)||($review->rating == 5)?'star-checked':'' ?>" id="star_3" onclick="rate(3)"></span>
-                                <span class="star fas fa-star <?= isset($review->rating)&&($review->rating == 4)||($review->rating == 5)?'star-checked':'' ?>" id="star_4" onclick="rate(4)"></span>
-                                <span class="star fas fa-star <?= isset($review->rating)&&($review->rating == 5)?'star-checked':'' ?>" id="star_5" onclick="rate(5)"></span>
-                                <input type="hidden" id="star" name="rating" class="form-control" value="<?= isset($review->rating) ? $review->rating : old(esc('rating')) ?>" required>
+                                <?php if(isset($review->rating)) : ?>
+                                    <span class="star fas fa-star <?= ($review->rating == 1)||($review->rating == 5)?'star-checked':''; ?>" id="star_1" onclick="rate(1)"></span>
+                                    <span class="star fas fa-star <?= ($review->rating == 2)||($review->rating == 5)?'star-checked':'' ?>" id="star_2" onclick="rate(2)"></span>
+                                    <span class="star fas fa-star <?= ($review->rating == 3)||($review->rating == 5)?'star-checked':'' ?>" id="star_3" onclick="rate(3)"></span>
+                                    <span class="star fas fa-star <?= ($review->rating == 4)||($review->rating == 5)?'star-checked':'' ?>" id="star_4" onclick="rate(4)"></span>
+                                    <span class="star fas fa-star <?= ($review->rating == 5)?'star-checked':'' ?>" id="star_5" onclick="rate(5)"></span>
+                                    <input type="hidden" id="star" name="rating" class="form-control" value="<?= $review->rating ?>" required>
+                                <?php else : ?>
+                                    <span class="star fas fa-star" id="star_1" onclick="rate(1)"></span>
+                                    <span class="star fas fa-star" id="star_2" onclick="rate(2)"></span>
+                                    <span class="star fas fa-star" id="star_3" onclick="rate(3)"></span>
+                                    <span class="star fas fa-star" id="star_4" onclick="rate(4)"></span>
+                                    <span class="star fas fa-star" id="star_5" onclick="rate(5)"></span>
+                                    <input type="hidden" id="star" name="rating" class="form-control" value="<?= old(esc('rating')) ?>" required>
+                                <?php endif; ?>
                                 <?php if(isset($validation)) : ?>
                                     <p class="text-danger">*<?= $validation->getError('rating'); ?></p>
                                 <?php endif; ?>
