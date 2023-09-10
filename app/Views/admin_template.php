@@ -64,11 +64,26 @@
                     <i class="fas fa-mountain"></i>
                     <span>Produk</span>
                 </a>
-                <div id="collapseProduk" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseProduk" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu:</h6>
                         <a class="collapse-item" href="<?= base_url('admin/produk') ?>">Lihat Semua</a>
                         <a class="collapse-item" href="<?= base_url('admin/produk/create') ?>">Tambah Produk</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReview"
+                    aria-expanded="true" aria-controls="collapseReview">
+                    <i class="fas fa-star"></i>
+                    <span>Review</span>
+                </a>
+                <div id="collapseReview" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Menu:</h6>
+                        <a class="collapse-item" href="<?= base_url('admin/review') ?>">Lihat Semua</a>
+                        <a class="collapse-item" href="<?= base_url('admin/review/create') ?>">Tambah Review</a>
                     </div>
                 </div>
             </li>
@@ -79,7 +94,7 @@
                     <i class="fas fa-list"></i>
                     <span>Kategori</span>
                 </a>
-                <div id="collapseKategori" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseKategori" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu:</h6>
                         <a class="collapse-item" href="<?= base_url('admin/kategori') ?>">Lihat Semua</a>
@@ -94,7 +109,7 @@
                     <i class="fas fa-images"></i>
                     <span>Foto Produk</span>
                 </a>
-                <div id="collapseFoto" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseFoto" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu:</h6>
                         <a class="collapse-item" href="<?= base_url('admin/foto-produk') ?>">Lihat Semua</a>
@@ -109,7 +124,7 @@
                     <i class="far fa-images"></i>
                     <span>Galeri</span>
                 </a>
-                <div id="collapseGaleri" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseGaleri" class="collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu:</h6>
                         <a class="collapse-item" href="<?= base_url('admin/galeri') ?>">Lihat Semua</a>
@@ -124,7 +139,7 @@
                     <i class="fas fa-check-square"></i>
                     <span>Produk Inclusion</span>
                 </a>
-                <div id="collapseTermasuk" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTermasuk" class="collapse" aria-labelledby="headingSix" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu:</h6>
                         <a class="collapse-item" href="<?= base_url('admin/termasuk') ?>">Lihat Semua</a>
@@ -139,7 +154,7 @@
                     <i class="fas fa-times-circle"></i>
                     <span>Produk Exclusion</span>
                 </a>
-                <div id="collapseTakTermasuk" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTakTermasuk" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu:</h6>
                         <a class="collapse-item" href="<?= base_url('admin/tak-termasuk') ?>">Lihat Semua</a>
@@ -154,7 +169,7 @@
                     <i class="far fa-images"></i>
                     <span>Ketentuan Produk</span>
                 </a>
-                <div id="collapseKetentuan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseKetentuan" class="collapse" aria-labelledby="headingEight" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu:</h6>
                         <a class="collapse-item" href="<?= base_url('admin/ketentuan') ?>">Lihat Semua</a>

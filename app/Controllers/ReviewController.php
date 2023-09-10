@@ -23,6 +23,4 @@ class ReviewController extends BaseController
 
         return view('admin/review/form',$data);
     }
-
-    
 }

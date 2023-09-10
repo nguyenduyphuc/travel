@@ -109,6 +109,18 @@ class ProdukController extends BaseController
         }
     }
 
+    public function edit($id_produk)
+    {
+        $paramProduk    = array('id_produk'=>$id_produk);
+
+        $data = [
+            'dataKategori'    => $this->objKategori->getAllCatForAdm(),
+            'dataProduk'      => $this->objProduk->getDataBy($paramProduk)->getRow()
+        ];
+
+        return view('admin/produk/form', $data);
+    }
+
     public function update($id_produk)
     {
         if(!$this->validate($this->objProduk->getRules()))
