@@ -1,0 +1,530 @@
+:root{
+	--white:  #FFF;
+	--grey: #f2f2f2;
+	--bs-grey: #6c757d;
+	--more-grey: #727272;
+	--light-blue: #00CCFF;
+	--blue:#0D6EfD;
+}
+
+/*Front end CSS*/
+.cover-homepage{
+	height: 95vh;
+	background-position: 50% 25%;
+	background-size: cover;
+}
+
+.cover-contact{
+	height: 30vh;
+	background-position: 50% 50%;
+	background-size: cover;
+}
+
+.light-blue{
+	color: var(--light-blue);
+}
+
+.text-cover{
+	text-shadow: 2px 2px #0000;
+}
+	.text-cover p{
+		font-weight: 400;
+	}
+
+.span-title{
+	border-bottom:solid 1px var(--more-grey);
+	padding-bottom:10px;
+	margin-bottom:15px;
+	color:var(--light-blue);
+	text-transform:uppercase;
+}
+	.span-title span{
+		border-bottom:solid 0.25rem var(--light-blue);
+		padding-bottom:0.5rem;
+	}
+
+.cat-img{
+	margin: auto;
+	width: 50%;
+	max-width: 150px;
+	max-height: 150px;
+}
+
+.cat-title{
+	margin-bottom: -5px;
+}
+
+.validator{
+	width: 70%;
+}
+
+.danger{
+	background-color: #ff695e;
+}
+
+.icon{
+	height: 5rem;
+	width: 5rem;
+}
+
+.harga-aktivitas-b{
+	color:#00bffe;
+	font-size:45px;
+	margin-top: -15px;
+}
+
+.card-booking{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #f2f2f2;
+	background-clip: border-box;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 0.75rem;
+}
+
+.text-justify{
+	text-align:justify;
+}
+
+.mirror{
+	-webkit-transform: scaleX(-1);
+  	transform: scaleX(-1);
+}
+
+ul.recommendation{
+	list-style-type: none;
+}
+
+	ul.recommendation a{
+		font-size:18px;
+		margin:10px;
+		text-align:center;	
+	}
+
+.text-decoration-none {
+  text-decoration: none !important;
+  color: #000;
+}
+
+.checkout-img{
+	max-width: 15rem;
+	max-height: 15rem;
+	border-radius: 20px;
+}
+
+.checkout-review{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: var(--grey);
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.75rem;
+}
+	.checkout-review h6{
+		margin-top: -0.75rem;
+		color: var(--blue);
+		font-size: 2rem;
+		font-weight: bold;
+	}
+
+.checkout-details{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  background-color: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.75rem;
+}
+
+.d-none{
+	display: none;
+}
+
+.whatsapp {
+  display: block;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+	.whatsapp img{
+		width: 50px;
+	}
+
+#top {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 99;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.book-date{
+	color: var(--more-grey);
+}
+
+.price-product{
+	font-size:3rem;
+	margin-top:-20px;
+	color:#00bffe;
+}
+
+.star-checked{
+    color: #FFA500;
+}
+
+.review-gallery{
+	display: flex;
+	justify-content: center;
+}
+
+.review-gallery img{
+	transition: 0.5s;
+	width: 70px;
+	height: 70px;
+	max-width: 70px;
+	max-height: 70px;
+	margin-left: 0.5rem;
+}
+
+.review-gallery img:hover{
+	-ms-transform: scale(1.5);
+	-webkit-transform: scale(1.5);
+ 	transform: scale(1.5); 
+}
+
+.web-gallery{
+	height: 15rem;
+	object-fit: cover;
+	padding: 0;
+}
+
+.wrapper-contact{
+	display: flex;
+}
+
+@media (max-width:320px){
+	.cat-img{
+		margin: auto;
+		width: 50%;
+		max-width: 100%;
+		max-height: 100%;
+	}
+	
+	.cat-title{
+		margin-bottom: 0;
+	}
+
+	.checkout-img{
+		max-width: 100%;
+		max-height: 100%;
+	}
+}
+
+.image-start{
+	text-align: right;
+}
+
+.image-end{
+	text-align: left;
+}
+
+.contact-img{
+	height: 350px;
+	width: 350px;
+	margin: 10px;
+	object-fit: cover;
+}
+
+.responsive-align-right{
+	text-align: right;
+}
+
+.bl{
+	border-left: 1px solid var(--bs-grey);
+}
+
+.m-review-form{
+	margin-left: 1.5rem;
+}
+
+@media (max-width:1200px){
+	.cat-img{
+		margin: auto;
+  	width: 50%;
+		max-width: 88%;
+		max-height: 88%;
+	}
+
+	.checkout-img{
+		max-width: 88%;
+		max-height: 88%;
+	}
+
+	.image-start{
+		text-align: center;
+	}
+
+	.image-end{
+		text-align: center;
+	}
+}
+
+@media (max-width:600px){
+	.p-list{
+		padding: 1rem;
+	}
+
+	.cat-img{
+		margin: auto;
+		width: 50%;
+		max-width: 90%;
+		max-height: 90%;
+	}
+
+	.checkout-img{
+		max-width: 90%;
+		max-height: 90%;
+	}
+
+	.validator{
+		width: 100%;
+	}
+
+	.m-review-form{
+		margin-left: 1rem;
+	}
+
+	.cover-homepage{
+		height: 40vh;
+	}
+		.cover-homepage h1{
+			font-size: 1.5rem;
+		}
+
+		.cover-homepage p{
+			font-size: 1.1rem;
+		}
+}
+
+@media (max-width:480px){
+	.cover-homepage{
+		height: 40vh;
+		background-position:20%;
+	}
+		.cover-homepage h1{
+			font-size: 1.5rem;
+		}
+
+		.cover-homepage p{
+			font-size: 1.1rem;
+		}
+
+	.cat_img{
+		margin: auto;
+		width: 50%;
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	.cat-title{
+		margin-bottom: 2px;
+	}
+
+	.checkout-img{
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	.m-review-form{
+		margin-left: 0;
+	}
+
+	.web-gallery
+	{
+		padding:1rem;
+	}
+}
+
+@media (max-width:400px){
+	.contact-img{
+		height: 300px;
+		width: 300px;
+	}
+
+	.bl{
+		border-left: none;
+	}
+
+	.responsive-align-right{
+		text-align: center;
+	}
+
+	.m-review-form{
+		margin-left: 0;
+	}
+}
+
+/* Admin Page CSS */
+
+.p-admin{
+	margin-bottom: -0.15rem; 
+	font-size: 1.25rem; 
+	text-align: left; 
+	margin-top: 0.5rem !important;
+}
+
+.img-admin{
+	max-width: 150px;
+	max-height: 150px;
+}
+
+.ul-light{
+  list-style: none outside none;
+  padding-left: 0;
+  margin-bottom:0;
+}
+.ul-light li{
+  display: block;
+  float: left;
+  margin-right: 0px;
+  cursor:pointer;
+}
+.ul-light img{
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.namespace{
+	margin-top: -0.75rem;
+}
+
+.form-container{
+  background-color: #1980df;
+  display: flex;
+  justify-content: center;
+}
+
+.form-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+	.form-box h4{
+    font-weight: bold;
+    color: #fff;
+	}
+
+.image-container{
+	background: url('../img/tanjung-benoa-parasailing-adventure.jpg') center no-repeat;
+	background-size: cover;
+	height: 100vh;
+}
+
+.form-container{
+    background-color: #1980df;
+    display: flex;
+    justify-content: center;
+}
+
+.form-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.form-box h4{
+    font-weight: bold;
+    color: #fff;
+}
+
+.form-box .form-input {
+    position: relative;
+}
+
+.form-box .form-input input{
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: white;
+    padding-left: 45px;
+}
+
+.form-box .form-input span{
+    position: absolute;
+    top: 8px;
+    padding-left: 20px;
+    color: #777;
+}
+
+.form-box .form-input input::placeholder{
+    padding-left: 0px;
+}
+
+.form-box .form-input input:focus,
+.form-box .form-input input:valid{
+    border-bottom: 2px solid #dc3545;
+}
+
+.form-box input[type="checkbox"]:not(:checked) + label:before{
+    background: transparent;
+    border: 2px solid #fff;
+    width: 15px;
+    height: 15px;
+}
+
+.form-box .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before{
+    background-color: #dc3545;
+    border: 0px;
+}
+
+.form-box button[type="submit"]{
+    border: none;
+    cursor: pointer;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.form-box button[type="submit"]:hover{
+    -webkit-box-shadow: 0px 9px 10px -2px rgba(0,0,0,0.55);
+    -moz-box-shadow: 0px 9px 10px -2px rgba(0,0,0,0.55);
+    box-shadow: 0px 9px 10px -2px rgba(0,0,0,0.55);
+}
+
+.forget-link, .register-link, .login-link{
+    color: #fff;
+    font-weight: bold;
+}
+
+.forget-link:hover, .register-link:hover, .login-link:hover{
+    color: #292525;
+}
