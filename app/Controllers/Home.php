@@ -11,8 +11,11 @@ class Home extends BaseController
 
     public function index()
     {
+        $paramParent = array('parent >' => 0);
+
         $data = [
             'kategoriNavbar'    => $this->objKategori->getMenuCat(),
+            'dataKategori'      => $this->objKategori->getDataBy($paramParent)->getResult(),
             'produkDitampilkan' => $this->objProduk->showInIndex()->getResult(),
             'galeriDitampilkan' => $this->objGaleri->showInIndex()->getResult(),
         ];

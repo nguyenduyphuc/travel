@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link href="<?= base_url('assets/fontawesome/css/all.min.css'); ?>" rel="stylesheet">
     <link href="<?= base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
+
+    <?= $this->renderSection('specific-css') ?>
+
     <link href="<?= base_url('assets/css/styles.css'); ?>" rel="stylesheet">
 
     <link rel="apple-touch-icon" sizes="57x57" href="<?= base_url('assets/images/icon/apple-icon-57x57.png') ?>">
@@ -21,8 +24,6 @@
     <link rel="icon" type="image/png" sizes="96x96" href="<?= base_url('assets/images/icon/favicon-96x96.png') ?>">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/images/icon/favicon-16x16.png') ?>">
     <link rel="manifest" href="<?= base_url('assets/images/icon/manifest.json') ?>">
-
-    <?= $this->renderSection('specific-css') ?>
 
     <?= $this->renderSection('specific-tag') ?>
   </head>
@@ -98,8 +99,9 @@
     <script src="<?= base_url('assets/js/jquery.js') ?>"></script>
     <script src="<?= base_url('assets/fontawesome/js/all.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/bootstrap.bundle.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/main.js') ?>"></script>
 
     <?= $this->renderSection('specific-js') ?>
+    
+    <script src="<?= base_url('assets/js/main.js') ?>"></script>
   </body>
 </html>
