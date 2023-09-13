@@ -31,7 +31,8 @@ class KategoriController extends BaseController
             'alt_foto'              => $this->request->getPost('alt_foto'),
             'judul_seo_kategori'    => $this->request->getPost('judul_seo_kategori'),
             'deskripsi_seo_kategori'=> $this->request->getPost('deskripsi_seo_kategori'),
-            'url_kategori'          => $slug
+            'url_kategori'          => $slug,
+            'created_at'            => date("Y-m-d H:i:s")
         ];
     }
 

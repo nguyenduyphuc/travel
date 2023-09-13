@@ -18,6 +18,14 @@
                 display: block;
             }
         }
+
+        .owl-carousel .owl-item {
+            padding: 0 5px;
+        }
+
+        .owl-nav {
+            display: none;
+        }
     </style>
 <?= $this->endSection() ?>
 
@@ -56,14 +64,20 @@
     <!-- End Cover -->
 
     <!-- Programs -->
-    <div class="container m-5">
+    <div class="container my-5">
 
-        <div class="owl-carousel owl-theme">
-            <div class="item">
-                <div class="card">
-                    ppp
+        <div class="text-center">
+            <h3 class="mb-5">Explore Bali with Us!</h3>
+        </div>
+
+        <div class="owl-carousel">
+            <?php foreach($dataKategori as $kategori) : ?>
+            <div class="card h-100">
+                <div class="card-body">
+                    <?= $kategori->nama_kategori ?>
                 </div>
             </div>
+            <?php endforeach; ?>
         </div>
 
     </div>
@@ -78,7 +92,7 @@
     <script>
         $(document).ready(function(){
             $(".owl-carousel").owlCarousel({
-                loop:false,
+                loop:true,
                 margin:0,
                 responsiveClass:true,
                 responsive:{
